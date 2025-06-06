@@ -5,8 +5,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject cubeC, sphereC, cylinderC, capsuleC;
     private GameObject currentCreature;
+    private bool hasAppeared = false;
 
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,13 +45,19 @@ public class GameManager : MonoBehaviour
             currentCreature = cylinderC;
             currentCreature.gameObject.SetActive(true);
         }
+        if (currentCreature != null && !hasAppeared)
+        {
+            hasAppeared = true;
+            currentCreature.GetComponent<Creature>().EnterAnimation();
+        }
     }
 
     void DisappearPrevious()
     {
-        if (currentCreature != null)
+        if (currentCreature != null && hasAppeared)
         {
             currentCreature.gameObject.SetActive(false);
+            hasAppeared = false;
         }
     }
 }
