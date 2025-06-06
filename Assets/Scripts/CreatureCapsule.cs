@@ -2,24 +2,21 @@ using UnityEngine;
 
 public class CreatureCapsule : Creature
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    // Basically Fly?
     protected override void Move()
     {
         return;
     }
 
+    // Move up and Dive in to attack the target
     protected override void Attack()
+    {
+        return;
+    }
+
+    // Fly in the scene
+    protected override void EnterAnimation()
     {
         return;
     }

@@ -1,24 +1,22 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class CreatureSphere : Creature
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    //Zoom through the scene in fast speed
     protected override void Move()
     {
         return;
     }
 
+    // Attack the target from different directions
     protected override void Attack()
+    {
+        return;
+    }
+
+    // Roll in a circle and return to the main position.
+    protected override void EnterAnimation()
     {
         return;
     }
