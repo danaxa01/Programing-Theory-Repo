@@ -8,7 +8,7 @@ public abstract class Creature : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        EnterAnimation();
+        //EnterAnimation();
     }
 
     // Update is called once per frame 
@@ -32,6 +32,6 @@ public abstract class Creature : MonoBehaviour
     // Show an attack animation
     protected abstract void Attack();
 
-    // Trigger the animation when enetering the scene
+    // Trigger the animation when entering the scene
     protected abstract void EnterAnimation();
 }

@@ -18,6 +18,7 @@ public class CreatureCube : Creature
     // Just spawns
     protected override void EnterAnimation()
     {
-        return;
+        Debug.Log("Entering animation cube");
+        gameObject.SetActive(true);
     }
 }
