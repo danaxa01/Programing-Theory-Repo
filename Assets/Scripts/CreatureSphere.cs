@@ -4,14 +4,22 @@ using System.Collections;
 
 public class CreatureSphere : Creature
 {
-
+    //for attack
     private Vector3 attackTargetOffset = new Vector3(0, 0, 5f);
     private float jumpForce = 3f;
     private float dashSpeed = 15f;
     private float pauseTime = 0.01f;
+    //for move
     private float rollDistance = 3f;
     private float rollSpeed = 20f;
 
+    //for enetering animation
+    private float initialRadius = 5f;
+    private float spiralSpeed = 5.7f;     // Angular speed
+    private float inwardSpeed = 1f;     // How quickly it moves toward the center
+    private float spiralHeight = 0.5f;  // Fixed height for movement (y-axis)
+
+    // Starting Position of the object
     private Vector3 originalPosition = new Vector3(0, 0.5f, 0);
 
     //Zoom through the scene in fast speed
@@ -29,7 +37,8 @@ public class CreatureSphere : Creature
     // Roll in a circle and return to the main position.
     public override void EnterAnimation()
     {
-        return;
+        waitTime = 3.5f;
+        StartCoroutine(SpiralToCenter());
     }
 
     private IEnumerator RollForwardAndBack()
@@ -104,6 +113,30 @@ public class CreatureSphere : Creature
             traveled += step;
             yield return null;
         }
+    }
+
+    private IEnumerator SpiralToCenter()
+    {
+        float radius = initialRadius;
+        float angle = 0f;
+
+        while (radius > 0.1f)
+        {
+            angle += spiralSpeed * Time.deltaTime;         // Increase angle
+            radius -= inwardSpeed * Time.deltaTime;        // Decrease radius (move inward)
+
+            // Calculate x and z based on polar coordinates
+            float x = Mathf.Cos(angle) * radius;
+            float z = Mathf.Sin(angle) * radius;
+
+            transform.position = new Vector3(originalPosition.x + x, spiralHeight, originalPosition.z + z);
+
+            yield return null;
+        }
+
+        // Snap exactly to the center at the end
+        transform.position = originalPosition;
+        waitTime = 2.0f;
     }
 
 }

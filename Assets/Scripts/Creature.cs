@@ -6,14 +6,14 @@ using System.Collections;
 //ABSTRACTION//
 public abstract class Creature : MonoBehaviour
 {
-    private bool isActing = false;
-    protected float waitTime = 2.0f;
+    public bool isActing = false;
+    public float waitTime { get; protected set; } = 2f;
 
     protected Rigidbody rb;
 
     private void Start()
     {
-         rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
     // Update is called once per frame 
     //INHERITANCE// all creatures can use the attack and move method when the player presses j or space bar

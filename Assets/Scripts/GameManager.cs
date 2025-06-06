@@ -42,7 +42,9 @@ public class GameManager : MonoBehaviour
         if (currentCreature != null && !hasAppeared)
         {
             hasAppeared = true;
+            currentCreature.GetComponent<Creature>().isActing = true;
             currentCreature.GetComponent<Creature>().EnterAnimation();
+            currentCreature.GetComponent<Creature>().isActing = false;
         }
     }
 

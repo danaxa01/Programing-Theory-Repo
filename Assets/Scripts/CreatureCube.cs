@@ -3,7 +3,7 @@ using System.Collections;
 public class CreatureCube : Creature
 {
 
-    private float moveDistance = 2f, basicMoveSpeed = 2f;
+    private float moveDistance = 2f, basicMoveSpeed = 3f;
     private float jumpForce = 3f, attackJumpForce = 3f;
     private float delayBetweenMoves = 0.3f, pauseAfterDash = 0.2f;
 
@@ -22,10 +22,12 @@ public class CreatureCube : Creature
     // Just spawns
     public override void EnterAnimation()
     {
-        return;
+        waitTime = 3f;
+        transform.position = new Vector3(0, 12, 0);
+        while (!IsGrounded()) { }
+        waitTime = 2f;
     }
 
-    
     private IEnumerator MovementSequence()
     {
         // Move Forward
