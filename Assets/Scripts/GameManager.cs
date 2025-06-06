@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject cubeC, sphereC, cylinderC, capsuleC;
+    [SerializeField] private GameObject cubeC, sphereC, capsuleC;
     private GameObject currentCreature;
     private bool hasAppeared = false;
 
@@ -31,12 +31,6 @@ public class GameManager : MonoBehaviour
         {
             DisappearPrevious();
             currentCreature = capsuleC;
-            currentCreature.gameObject.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            DisappearPrevious();
-            currentCreature = cylinderC;
             currentCreature.gameObject.SetActive(true);
         }
         if (currentCreature != null && !hasAppeared)
