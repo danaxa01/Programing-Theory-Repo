@@ -7,13 +7,6 @@ public class CreatureCube : Creature
     private float jumpForce = 3f, attackJumpForce = 3f;
     private float delayBetweenMoves = 0.3f, pauseAfterDash = 0.2f;
 
-    private Rigidbody rb;
-
-    private void Start()
-    {
-         rb = GetComponent<Rigidbody>();
-    }
-
     // Basic move front back and spin
     public override void Move()
     {
@@ -83,11 +76,5 @@ public class CreatureCube : Creature
             moved += step;
             yield return null;
         }
-    }
-
-    private bool IsGrounded()
-    {
-        // Simple grounded check
-        return Physics.Raycast(transform.position, Vector3.down, 1.1f);
     }
 }

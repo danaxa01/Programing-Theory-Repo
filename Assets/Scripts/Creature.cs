@@ -6,22 +6,28 @@ using System.Collections;
 //ABSTRACTION//
 public abstract class Creature : MonoBehaviour
 {
-    private bool isMoving = false, isAttacking = false;
-    private float waitTime = 1.1f;
+    private bool isActing = false;
+    protected float waitTime = 2.0f;
+
+    protected Rigidbody rb;
+
+    private void Start()
+    {
+         rb = GetComponent<Rigidbody>();
+    }
     // Update is called once per frame 
     //INHERITANCE// all creatures can use the attack and move method when the player presses j or space bar
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J) && !isMoving)
+        if (Input.GetKeyDown(KeyCode.J) && !isActing)
         {
-            isMoving = true;
+            isActing = true;
             StartCoroutine(MovingCoroutine());
-            Move();
         }
-
-        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
+        else if (Input.GetKeyDown(KeyCode.Space) && !isActing)
         {
-            Attack();
+            isActing = true;
+            StartCoroutine(AttackingCoroutine());
         }
     }
 
@@ -29,15 +35,32 @@ public abstract class Creature : MonoBehaviour
     {
         Move();
         yield return new WaitForSeconds(waitTime);
-        isMoving = false;
+        isActing = false;
+    }
+
+    IEnumerator AttackingCoroutine()
+    {
+        Attack();
+        yield return new WaitForSeconds(waitTime);
+        isActing = false;
     }
 
     // Move in a specific pattern to showcase the movement of the creature
+    //POLYMORPHISM//
     public abstract void Move();
 
     // Show an attack animation
+    //POLYMORPHISM//
     public abstract void Attack();
 
     // Trigger the animation when entering the scene
+    //POLYMORPHISM//
     public abstract void EnterAnimation();
+
+    //INHERITANCE//
+    protected bool IsGrounded()
+    {
+        // Simple grounded check
+        return Physics.Raycast(transform.position, Vector3.down, 1.1f);
+    }
 }
