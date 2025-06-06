@@ -16,6 +16,7 @@ public class CreatureCube : Creature
     // Attack in a very basic manner?
     public override void Attack()
     {
+        waitTime = 2f;
         StartCoroutine(AttackSequence());
     }
 
@@ -24,8 +25,6 @@ public class CreatureCube : Creature
     {
         waitTime = 3f;
         transform.position = new Vector3(0, 12, 0);
-        while (!IsGrounded()) { }
-        waitTime = 2f;
     }
 
     private IEnumerator MovementSequence()
@@ -65,6 +64,7 @@ public class CreatureCube : Creature
 
         // Dash backward
         yield return MoveInDirection(Vector3.back, basicMoveSpeed * 3);
+        waitTime = 3f;
     }
     
     private IEnumerator MoveInDirection(Vector3 direction, float moveSpeed)

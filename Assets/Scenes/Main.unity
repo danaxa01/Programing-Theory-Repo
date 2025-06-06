@@ -165,7 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubeC: {fileID: 1505486620}
   sphereC: {fileID: 847728162}
-  cylinderC: {fileID: 0}
   capsuleC: {fileID: 777158464}
 --- !u!1 &330585543
 GameObject:

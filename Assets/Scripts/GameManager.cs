@@ -15,19 +15,19 @@ public class GameManager : MonoBehaviour
 
     void AppearObject()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             DisappearPrevious();
             currentCreature = cubeC;
             currentCreature.gameObject.SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.N))
         {
             DisappearPrevious();
             currentCreature = sphereC;
             currentCreature.gameObject.SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.M))
         {
             DisappearPrevious();
             currentCreature = capsuleC;
