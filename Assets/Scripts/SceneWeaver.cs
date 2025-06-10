@@ -4,22 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneWeaver : MonoBehaviour
 {
-
-    [SerializeField] private Button start;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void ToMainScreen()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void ToMainScreen()
-    {
-        
+        SceneManager.LoadScene(1);
     }
 }
