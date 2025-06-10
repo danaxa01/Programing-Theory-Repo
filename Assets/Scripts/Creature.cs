@@ -7,6 +7,7 @@ using System.Collections;
 public abstract class Creature : MonoBehaviour
 {
     public bool isActing = false;
+    //ENCAPSULATION//
     public float waitTime { get; protected set; } = 2f;
 
     protected Rigidbody rb;
